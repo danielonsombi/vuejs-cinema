@@ -13,12 +13,35 @@
     </style>
 </head>
 <body>
-<div id="app">
+<div id="app" v-cloak>
     <div id="title">
         <img src="/public/logo.png">
         <h1>Vue.js Cinema</h1>
     </div>
-</div>
+    <!--<div id="overview">
+        <div class="main">
+            <movie-list 
+                v-bind:genre="genre" 
+                v-bind:time="time" 
+                :movies="movies"
+                :day="day"
+                ></movie-list>
+
+                <-- No need for  v-on:check-filter="checkFilter" too since
+                already handled by the $bus ->
+            <movie-filter></movie-filter>
+        </div>
+    </div> 
+The Code above transfered to overview to allow for vue-routing.-->
+<keep-alive>
+    <router-view 
+        v-bind:genre="genre" 
+        v-bind:time="time" 
+        :movies="movies"
+        :day="day">
+    </router-view>
+</keep-alive>
+</div> 
 <script src="/dist/build.js"></script>
 </body>
 </html>
